@@ -112,6 +112,20 @@ function incrementCounter(){
       <p><b>{{ person.name }} {{ person.lastName }} was born in {{ person.yearOfBirth }}</b></p>
     </div>
   </div>
+
+  <div class="exercise">
+    <h3>Exercise 6: v-on directive</h3>
+    <!-- TODO Exercise 6:
+    <p>We have a variable and a function that increments the value. We have to modify the following button
+    to bind a event, so when the button is clicked, the counter is incremented by one, executing
+    the function defined
+    -->
+    <p>Click the following button to increment counter:</p>
+    <div>
+      <input type="button" name="incrementCounter" id="incrementCounter" value="Increment counter">
+      <p>Button was clicked: <b>{{counter}} times</b></p>
+    </div>
+  </div>
 </template>
 
 <style scoped>
