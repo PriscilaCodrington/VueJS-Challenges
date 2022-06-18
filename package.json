@@ -1,0 +1,19 @@
+{
+  "name": "vue-refugees-code",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-cli-service build",
+    "preview": "vite preview --port 4173",
+    "serve": "vue-cli-service serve"
+  },
+  "dependencies": {
+    "@vue/cli-service": "^5.0.6",
+    "vue": "^3.2.36",
+    "vue-router": "^4.0.16"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.3",
+    "vite": "^2.9.9"
+  }
+}
