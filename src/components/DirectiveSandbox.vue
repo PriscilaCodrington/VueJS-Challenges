@@ -55,7 +55,11 @@ function incrementCounter(){
     <!-- TODO Exercise 1:
     You can see that we have a variable that is returned inside an object to expose the value to the template.
     That means you can use that variables inside the HTML, so you have to show that message using the both ways
-     that you need to know: using interpolation and using v-text directive-->
+    that you need to know: using interpolation and using v-text directive-->
+    <!-- Using v-text -->
+    <p v-text="msg"></p>
+    <!-- using interpolation -->
+    <p>{{msg}}</p>
   </div>
 
   <div class="exercise">
@@ -64,17 +68,17 @@ function incrementCounter(){
     We have a variable that is a boolean value, so we are going to use the v-if and v-else directives to load some
     HTML elements or others. Add he directive to the following HTML elements and modify manually the value
     of the variable to see the changes -->
-    <p>This paragraph should only be loaded if the value is "true"</p>
-    <p>If the conditions doesn't meet, we are going to show this paragraph</p>
+    <p v-if="booleanForExercise2">This paragraph should only be loaded if the value is "true"</p>
+    <p v-else>If the conditions doesn't meet, we are going to show this paragraph</p>
   </div>
 
   <div class="exercise">
     <h3>Exercise 3: v-show directive</h3>
     <!-- TODO Exercise 3:
     We are going to show the following HTML elements only if the numeric value meets certain condition -->
-    <p>The value at variable numberForExercise3 is positive</p>
-    <p>The value at variable numberForExercise3 is negative</p>
-    <p>The value at variable numberForExercise3 is 0</p>
+    <p v-show="numberForExercise3 > 0">The value at variable numberForExercise3 is positive</p>
+    <p v-show="numberForExercise3 < 0">The value at variable numberForExercise3 is negative</p>
+    <p v-show="numberForExercise3 == 0">The value at variable numberForExercise3 is 0</p>
   </div>
 
   <div class="exercise">
@@ -82,10 +86,13 @@ function incrementCounter(){
     <!-- TODO Exercise 4:
     We have an array of objects. We want to iterate over the array and print certain HTML elements as many times
     as elements we have. This time, we want to iterate over it and show something that fits the following example structure,
-    as many times as elements we have in the array to show a list of of job positions. The structure is:
+    to show a list of of job positions. The structure is:
       Full-Stack developer: Developing in both front and back sides
     You should use list (ordered or unordered) HTML elements.
     -->
+    <ul>
+      <li v-for="item in arrayForExercise4">{{item.name}}: {{item.description}}</li>
+    </ul>
   </div>
 
   <div class="exercise">
@@ -99,13 +106,13 @@ function incrementCounter(){
     -->
     <p>Here, you can edit the person information. Check that the information in the bottom paragraph is refreshing live.</p>
     <div>
-      Name: <input type="text" name="name" id="name">
+      Name: <input type="text" name="name" id="name" v-model="person.name">
     </div>
     <div>
-      Last name: <input type="text" name="lastName" id="lastName">
+      Last name: <input type="text" name="lastName" id="lastName" v-model="person.lastName">
     </div>
     <div>
-      Year of birth: <input type="number" name="yearOfBirth" id="yearOfBirth">
+      Year of birth: <input type="number" name="yearOfBirth" id="yearOfBirth" v-model="person.yearOfBirth">
     </div>
     <div>
       <p><b>{{ person.name }} {{ person.lastName }} was born in {{ person.yearOfBirth }}</b></p>
@@ -121,7 +128,7 @@ function incrementCounter(){
     -->
     <p>Click the following button to increment counter:</p>
     <div>
-      <input type="button" name="incrementCounter" id="incrementCounter" value="Increment counter">
+      <input type="button" name="incrementCounter" id="incrementCounter" value="Increment counter" @click="incrementCounter()">
       <p>Button was clicked: <b>{{counter}} times</b></p>
     </div>
   </div>
