@@ -1,14 +1,16 @@
-<script setup>
-import { ref } from 'vue'
-
-
-</script>
+<script></script>
 
 <template>
   <div>
     <h1>Props exercise</h1>
     <div>
-      <p>Official documentation: <a href="https://vuejs.org/guide/components/props.html#props-declarationl">Props</a></p>
+      <p>
+        Official documentation:
+        <a
+          href="https://vuejs.org/guide/components/props.html#props-declarationl"
+          >Props</a
+        >
+      </p>
     </div>
   </div>
 
@@ -30,6 +32,4 @@ import { ref } from 'vue'
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
