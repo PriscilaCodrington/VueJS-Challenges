@@ -1,42 +1,54 @@
-<script setup>
-import { ref } from 'vue'
+<script>
+import { defineComponent } from "vue";
 
-/** EXERCISE 1 VARIABLES **/
-const msg = "I am printing a text from the javascript.";
-
-/** EXERCISE 2 VARIABLES **/
-let booleanForExercise2 = true;
-
-/** EXERCISE 3 VARIABLES **/
-let numberForExercise3 = 5;
-
-/** EXERCISE 4 VARIABLES **/
-let arrayForExercise4 = [
-      {name: "Full-Stack developer", description: "Developing in both front and back sides"},
-      {name: "Front-end developer", description: "Specialized on developing in front side"},
-      {name: "Back-end developer", description: "Specialized on developing in back side"},
-      {name: "Data scientist", description: "Specialized on data treatment"},
-    ];
-
-/** EXERCISE 5 VARIABLES **/
-/**
- * Variable for exercise 5. Notice that we are using 'ref' function, that allows
- * to create a reactive variable, so when the value changes, is automatically refreshed
- * and reflext the changes in template
- * @type {Ref<UnwrapRef<{lastName: string, name: string, yearOfBirth: number}>>}
- */
-let person = ref({
-  name: "David",
-  lastName: "Miguel de la Fuente",
-  yearOfBirth: 1989
+export default defineComponent({
+  name: "Directive Sandbox",
+  data() {
+    return {
+      /** EXERCISE 1 VARIABLES **/
+      msg: "I am printing a text from the javascript.",
+      /** EXERCISE 2 VARIABLES **/
+      booleanForExercise2: true,
+      /** EXERCISE 3 VARIABLES **/
+      numberForExercise3: 5,
+      /** EXERCISE 4 VARIABLES **/
+      arrayForExercise4: [
+        {
+          name: "Full-Stack developer",
+          description: "Developing in both front and back sides",
+        },
+        {
+          name: "Front-end developer",
+          description: "Specialized on developing in front side",
+        },
+        {
+          name: "Back-end developer",
+          description: "Specialized on developing in back side",
+        },
+        {
+          name: "Data scientist",
+          description: "Specialized on data treatment",
+        },
+      ],
+      /** EXERCISE 5 VARIABLES **/
+      person: {
+        name: "David",
+        lastName: "Miguel de la Fuente",
+        yearOfBirth: 1989,
+      },
+      /** EXERCISE 6 VARIABLES **/
+      counter: 0,
+    };
+  },
+  methods: {
+    setCurrentMode(mode) {
+      this.currentMode = mode;
+    },
+    incrementCounter() {
+      return ++this.counter;
+    },
+  },
 });
-
-/** EXERCISE 6 VARIABLES **/
-let counter = ref(0);
-function incrementCounter(){
-  return ++this.counter;
-}
-
 </script>
 
 <template>
@@ -44,10 +56,19 @@ function incrementCounter(){
     <h1>Directives in Vue</h1>
   </div>
   <div>
-    <p>Directives are reusable functionalities that you can bind to a component for many reasons. Also, you can
-      define custom ones, but this is not the point right now. There are several directives that is useful
-      to know that allow us to build enriched applications full of interactions in not so much time and easily.</p>
-    <p>Official documentation: <a href="https://vuejs.org/api/built-in-directives.html">Built-in directives</a></p>
+    <p>
+      Directives are reusable functionalities that you can bind to a component
+      for many reasons. Also, you can define custom ones, but this is not the
+      point right now. There are several directives that is useful to know that
+      allow us to build enriched applications full of interactions in not so
+      much time and easily.
+    </p>
+    <p>
+      Official documentation:
+      <a href="https://vuejs.org/api/built-in-directives.html"
+        >Built-in directives</a
+      >
+    </p>
   </div>
 
   <div class="exercise">
@@ -59,7 +80,7 @@ function incrementCounter(){
     <!-- Using v-text -->
     <p v-text="msg"></p>
     <!-- using interpolation -->
-    <p>{{msg}}</p>
+    <p>{{ msg }}</p>
   </div>
 
   <div class="exercise">
@@ -68,17 +89,27 @@ function incrementCounter(){
     We have a variable that is a boolean value, so we are going to use the v-if and v-else directives to load some
     HTML elements or others. Add he directive to the following HTML elements and modify manually the value
     of the variable to see the changes -->
-    <p v-if="booleanForExercise2">This paragraph should only be loaded if the value is "true"</p>
-    <p v-else>If the conditions doesn't meet, we are going to show this paragraph</p>
+    <p v-if="booleanForExercise2">
+      This paragraph should only be loaded if the value is "true"
+    </p>
+    <p v-else>
+      If the conditions doesn't meet, we are going to show this paragraph
+    </p>
   </div>
 
   <div class="exercise">
     <h3>Exercise 3: v-show directive</h3>
     <!-- TODO Exercise 3:
     We are going to show the following HTML elements only if the numeric value meets certain condition -->
-    <p v-show="numberForExercise3 > 0">The value at variable numberForExercise3 is positive</p>
-    <p v-show="numberForExercise3 < 0">The value at variable numberForExercise3 is negative</p>
-    <p v-show="numberForExercise3 == 0">The value at variable numberForExercise3 is 0</p>
+    <p v-show="numberForExercise3 > 0">
+      The value at variable numberForExercise3 is positive
+    </p>
+    <p v-show="numberForExercise3 < 0">
+      The value at variable numberForExercise3 is negative
+    </p>
+    <p v-show="numberForExercise3 == 0">
+      The value at variable numberForExercise3 is 0
+    </p>
   </div>
 
   <div class="exercise">
@@ -91,7 +122,9 @@ function incrementCounter(){
     You should use list (ordered or unordered) HTML elements.
     -->
     <ul>
-      <li v-for="item in arrayForExercise4">{{item.name}}: {{item.description}}</li>
+      <li v-for="item in arrayForExercise4">
+        {{ item.name }}: {{ item.description }}
+      </li>
     </ul>
   </div>
 
@@ -104,18 +137,38 @@ function incrementCounter(){
     javascript, so we can execute extra functions with this data or allow the user to insert values that
     can determine what kind os operations we have to execute.
     -->
-    <p>Here, you can edit the person information. Check that the information in the bottom paragraph is refreshing live.</p>
+    <p>
+      Here, you can edit the person information. Check that the information in
+      the bottom paragraph is refreshing live.
+    </p>
     <div>
-      Name: <input type="text" name="name" id="name" v-model="person.name">
+      Name: <input type="text" name="name" id="name" v-model="person.name" />
     </div>
     <div>
-      Last name: <input type="text" name="lastName" id="lastName" v-model="person.lastName">
+      Last name:
+      <input
+        type="text"
+        name="lastName"
+        id="lastName"
+        v-model="person.lastName"
+      />
     </div>
     <div>
-      Year of birth: <input type="number" name="yearOfBirth" id="yearOfBirth" v-model="person.yearOfBirth">
+      Year of birth:
+      <input
+        type="number"
+        name="yearOfBirth"
+        id="yearOfBirth"
+        v-model="person.yearOfBirth"
+      />
     </div>
     <div>
-      <p><b>{{ person.name }} {{ person.lastName }} was born in {{ person.yearOfBirth }}</b></p>
+      <p>
+        <b
+          >{{ person.name }} {{ person.lastName }} was born in
+          {{ person.yearOfBirth }}</b
+        >
+      </p>
     </div>
   </div>
 
@@ -128,8 +181,16 @@ function incrementCounter(){
     -->
     <p>Click the following button to increment counter:</p>
     <div>
-      <input type="button" name="incrementCounter" id="incrementCounter" value="Increment counter" @click="incrementCounter()">
-      <p>Button was clicked: <b>{{counter}} times</b></p>
+      <input
+        type="button"
+        name="incrementCounter"
+        id="incrementCounter"
+        value="Increment counter"
+        @click="incrementCounter()"
+      />
+      <p>
+        Button was clicked: <b>{{ counter }} times</b>
+      </p>
     </div>
   </div>
 </template>

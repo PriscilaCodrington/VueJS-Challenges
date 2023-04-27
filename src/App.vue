@@ -1,23 +1,42 @@
-<script setup>
+<script>
+import { defineComponent } from "vue";
 
-import {ref} from 'vue'
-import router from './routes'
-
-let currentMode = ref(1);
-
-function setCurrentMode(mode) {
-  this.currentMode = mode;
-}
+export default defineComponent({
+  name: "VueJS Challenges",
+  data() {
+    return {
+      currentMode: 1,
+    };
+  },
+  methods: {
+    setCurrentMode(mode) {
+      this.currentMode = mode;
+    },
+  },
+});
 </script>
 
 <template>
-  <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125"/>
-  <div class="button-bar">Choose what you want to do:
-    <router-link to="/directive-sandbox"><button>Directive exercises (sandbox)</button></router-link>
-    <router-link to="/task-exercise"><button>Task exercise</button></router-link>
-    <router-link to="/props"><button >Using props</button></router-link>
-    <router-link to="/events"><button >Using events</button></router-link>
-    <router-link to="/fetching-data"><button >Fetching data</button></router-link>
+  <img
+    alt="Vue logo"
+    class="logo"
+    src="./assets/logo.svg"
+    width="125"
+    height="125"
+  />
+  <div class="button-bar">
+    Choose what you want to do:
+    <router-link to="/directive-sandbox"
+      ><button>Directive exercises (sandbox)</button></router-link
+    >
+    <router-link to="/task-exercise"
+      ><button>Task exercise</button></router-link
+    >
+    <router-link to="/props"><button>Using props</button></router-link>
+    <router-link to="/events"><button>Using events</button></router-link>
+    <router-link to="/fetching-data"
+      ><button>Fetching data</button></router-link
+    >
   </div>
   <div>
     <router-view></router-view>
@@ -25,7 +44,7 @@ function setCurrentMode(mode) {
 </template>
 
 <style>
-@import './assets/base.css';
+@import "./assets/base.css";
 
 #app {
   max-width: 1280px;

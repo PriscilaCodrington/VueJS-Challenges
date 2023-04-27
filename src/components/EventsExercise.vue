@@ -1,14 +1,22 @@
-<script setup>
-import { ref } from 'vue'
-
-</script>
+<script></script>
 
 <template>
   <div>
     <h1>Events exercise</h1>
     <div>
-      <p>Official documentation: <a href="https://vuejs.org/guide/essentials/event-handling.html">Event handling</a></p>
-      <p>Official documentation: <a href="https://vuejs.org/guide/components/events.html#emitting-and-listening-to-events">Custom Events</a></p>
+      <p>
+        Official documentation:
+        <a href="https://vuejs.org/guide/essentials/event-handling.html"
+          >Event handling</a
+        >
+      </p>
+      <p>
+        Official documentation:
+        <a
+          href="https://vuejs.org/guide/components/events.html#emitting-and-listening-to-events"
+          >Custom Events</a
+        >
+      </p>
     </div>
   </div>
   <div>
@@ -25,14 +33,13 @@ import { ref } from 'vue'
       <div class="event-hub">This box are the HTML EVENT LISTENER HUB</div>
     </div>
   </div>
-
 </template>
 
 <style scoped>
 .event-hub {
   background-color: hsla(160, 100%, 37%, 1);
   width: 100%;
-  padding:2rem;
+  padding: 2rem;
   font-weight: bold;
   color: white;
   text-align: center;
