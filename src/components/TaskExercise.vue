@@ -61,6 +61,73 @@ export default defineComponent({
       >
     </p>
   </div>
+  <div>
+    <div class="d-flex mt-5">
+      <input
+        type="text"
+        placeholder="Enter title"
+        class="w-30 form-control"
+        v-model="task"
+      />
+      <input
+        type="text"
+        placeholder="Description"
+        class="w-70 form-control"
+        v-model="task"
+      />
+      <input
+        type="text"
+        placeholder="Date to finish"
+        class="w-30 form-control"
+        v-model="task"
+      />
+      <button class="btn btn-warning rounded-0" @click="submitTask">
+        SUBMIT
+      </button>
+    </div>
+         <!-- Task table -->
+    <table class="table table-bordered mt-5">
+      <thead>
+        <tr>
+          <th scope="col">Task</th>
+          <th scope="col" style="width: 120px">Description</th>
+          <th scope="col" class="text-center">Date</th>
+          <th scope="col" class="text-center">#</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(task, index) in tasks" :key="index">
+          <td>
+            <span :class="task.status === 'finished' ? 'line-through' : ''">
+              {{ task.name }}
+            </span>
+          </td>
+          <td>
+            <span
+              class="pointer"
+              :class="getStatusClass(task)"
+              @click="changeStatus(task)"
+            >
+              {{ task.status }}
+            </span>
+          </td>
+          <td class="text-center">
+            <div @click="deleteTask(index)">
+              <span class="fa fa-trash pointer" />
+            </div>
+          </td>
+          <td class="text-center">
+            <div @click="editTask(index)">
+              <span class="fa fa-pen pointer" />
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div v-if="shouldShowCongratulations">
+      Congratulations! You completed all your tasks!
+    </div>
+  </div>
 </template>
 
 <style scoped>

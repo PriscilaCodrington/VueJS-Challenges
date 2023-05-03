@@ -1,4 +1,19 @@
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      mouseShow: false,
+    };
+  },
+  methods: {
+  clickHere(){
+    alert("CLICK!");
+  }
+  },
+
+  
+};
+</script>
 
 <template>
   <div>
@@ -30,7 +45,10 @@
        tho show or not certain element)
        - on mouseover: hides the HTML tag from the previous point
        -->
-      <div class="event-hub">This box are the HTML EVENT LISTENER HUB</div>
+      <div class="event-hub" @click='clickHere'  @mousemove="mouseShow= true" @mouseleave="mouseShow = false">
+        This box are the HTML EVENT LISTENER HUB
+      <h1 v-show="mouseShow">HelloFriends!!</h1>
+    </div>
     </div>
   </div>
 </template>

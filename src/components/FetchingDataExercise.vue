@@ -1,4 +1,45 @@
-<script></script>
+<script>
+
+import axios from "axios";
+
+export default {
+  data() {
+    return {
+      
+      titlesApi: [
+        {
+          title: "",
+          complete: false,
+
+        }
+      ],
+    };
+  },
+  methods: {
+    loadNewInfo() {
+      axios
+        .get("https://jsonplaceholder.typicode.com/todos")
+        .then((response) => {
+          for(let i = 0; i<= 50; i++){
+          console.log (response.data[i]);
+
+          this.titlesApi.push({
+            title: response.data[i].title,
+            complete: response.data[i].completed
+          })
+          i++
+          }
+      
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+
+    
+  },
+};
+</script>
 
 <template>
   <div>
@@ -14,11 +55,23 @@
     <table>
       <thead>
         <tr>
-          <th>Title</th>
+          <th @click="loadNewInfo()">Title</th>
           <th>Body</th>
         </tr>
       </thead>
       <tbody>
+        <tr v-for="(toDo, index) in titlesApi">
+          <td>
+            <span >
+              {{ toDo.title }}
+            </span>
+          </td>
+          <td>
+            <span>
+              {{ toDo.complete }}
+            </span>
+          </td>
+          </tr>
         <!-- Replace with the full list of TO-DOs -->
       </tbody>
     </table>
